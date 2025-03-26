@@ -14,8 +14,6 @@ public class Users {
 
     private String fullName;
 
-
-
     private Integer department;
 
     public void setUserId(long userId) {

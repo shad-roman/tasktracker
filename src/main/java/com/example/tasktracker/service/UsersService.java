@@ -40,7 +40,6 @@ public class UsersService {
             Users user = existingUser.get();
             user.setDepartment(updatedUser.getDepartment());
             user.setUserName(updatedUser.getUserName());
-            user.setUserId(updatedUser.getUserId());
             return userRepository.save(updatedUser);
         } else {
             throw new RuntimeException("User not found with id: " + id);

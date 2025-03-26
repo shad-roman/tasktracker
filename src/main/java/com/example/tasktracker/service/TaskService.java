@@ -3,6 +3,7 @@ package com.example.tasktracker.service;
 import com.example.tasktracker.model.Status;
 import com.example.tasktracker.model.Task;
 import com.example.tasktracker.repository.TaskRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +39,6 @@ public class TaskService {
         Optional<Task> existingTask = taskRepository.findById(id);
         if (existingTask.isPresent()){
             Task task = existingTask.get();
-            task.setTask_id(newTask.getTask_id());
             task.setTaskStatus(newTask.getTaskStatus());
             task.setDescription(newTask.getDescription());
             task.setName(newTask.getName());
@@ -61,7 +61,7 @@ public class TaskService {
     public Optional<Task> getById(Long id){
         return taskRepository.findById(id);
     }
-
+    @Transactional
     public Task addTask(Task task){
         return taskRepository.save(task);
     }
